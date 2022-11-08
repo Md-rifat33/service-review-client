@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FaUser } from 'react-icons/fa'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 
 const Signup = () => {
   return (
@@ -9,13 +12,30 @@ const Signup = () => {
           <div className="card-body">
             <div className="form-control">
               <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <FaUser className="absolute top-24 ml-2" />
+              <input
+                name="name"
+                type="text"
+                placeholder="name"
+                className="input input-bordered p-8"
+                required
+              />
+            </div>
+            <div className="form-control ">
+              <label className="label">
                 <span className="label-text">Email</span>
               </label>
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                className="absolute top-52 ml-2 "
+              />
               <input
                 name="email"
                 type="email"
                 placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered p-8 mt-1"
                 required
               />
             </div>
@@ -23,11 +43,15 @@ const Signup = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
+              <FontAwesomeIcon
+                icon={faLock}
+                className="absolute top-80 bottom-8 ml-3 "
+              />
               <input
                 name="password"
                 type="password"
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered p-8 ml-1 mt-1"
                 required
               />
             </div>
