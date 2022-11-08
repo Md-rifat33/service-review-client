@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle } from 'react-icons/fa'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider'
 import { GoogleAuthProvider } from 'firebase/auth'
@@ -8,6 +8,7 @@ import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 
 const Login = () => {
   const { providerLogin, signIn } = useContext(AuthContext)
+  const navigate = useNavigate()
   const googleProvider = new GoogleAuthProvider()
 
   const handleGoogleSignIn = () => {
@@ -15,6 +16,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user
         console.log(user)
+        navigate('/')
       })
       .catch((err) => console.error(err))
   }
@@ -29,6 +31,7 @@ const Login = () => {
         const user = result.user
         console.log(user)
         form.reset()
+        navigate('/')
       })
       .catch((err) => console.error(err))
   }
