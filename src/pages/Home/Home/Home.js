@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 import img1 from '../../../assets/image1.jpg'
 import img2 from '../../../assets/image2.jpg'
 import img3 from '../../../assets/image3.jpg'
@@ -70,6 +70,14 @@ const Home = () => {
           ))}
         </div>
         {/* end : service section */}
+        <div className="w-full flex justify-center mb-9 mt-16">
+          <Link
+            className="btn btn-primary w-80 h-14 text-lg text-slate-200 font-bold"
+            to="/services"
+          >
+            See All
+          </Link>
+        </div>
       </div>
     </div>
   )
