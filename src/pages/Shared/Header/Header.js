@@ -44,7 +44,7 @@ const Header = () => {
               {user?.photoURL ? (
                 <img src={user.photoURL} alt="" />
               ) : (
-                <FaUser className="mt-3 ml-3" />
+                <button>Log Out</button>
               )}
             </div>
           </label>

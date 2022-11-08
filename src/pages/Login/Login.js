@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import { FaGoogle } from 'react-icons/fa'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider'
 import { GoogleAuthProvider } from 'firebase/auth'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 
 const Login = () => {
-  const { providerLogin } = useContext(AuthContext)
+  const { providerLogin, signIn } = useContext(AuthContext)
   const googleProvider = new GoogleAuthProvider()
 
   const handleGoogleSignIn = () => {
@@ -17,8 +19,25 @@ const Login = () => {
       .catch((err) => console.error(err))
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const email = form.email.value
+    const password = form.password.value
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user
+        console.log(user)
+        form.reset()
+      })
+      .catch((err) => console.error(err))
+  }
+
   return (
-    <form className="hero w-3/4 mx-auto rounded-lg my-6 p-32 bg-base-200">
+    <form
+      onSubmit={handleSubmit}
+      className="hero w-3/4 mx-auto rounded-lg my-6 p-32 bg-base-200"
+    >
       <div className="hero-content w-full flex-col lg:flex-row-reverse">
         <div className="card flex-shrink-0   shadow-2xl bg-base-100">
           <div className="card-body">
@@ -26,11 +45,15 @@ const Login = () => {
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                className="absolute top-24 ml-2"
+              />
               <input
                 name="email"
                 type="email"
                 placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered p-8"
                 required
               />
             </div>
@@ -38,11 +61,12 @@ const Login = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
+              <FontAwesomeIcon icon={faLock} className="absolute top-52 ml-2" />
               <input
                 name="password"
                 type="password"
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered p-8 mt-1"
                 required
               />
             </div>

@@ -1,12 +1,33 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaUser } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider'
 
 const Signup = () => {
+  const { createUser } = useContext(AuthContext)
+  const navigate = useNavigate()
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const name = form.name.value
+    const email = form.email.value
+    const password = form.password.value
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user
+        console.log(user)
+        form.reset()
+        navigate('/')
+      })
+      .catch((error) => console.error(error))
+  }
   return (
-    <form className="hero w-3/4 mx-auto rounded-lg my-6 p-32 bg-base-200">
+    <form
+      onSubmit={handleSubmit}
+      className="hero w-3/4 mx-auto rounded-lg my-6 p-32 bg-base-200"
+    >
       <div className="hero-content w-full flex-col lg:flex-row-reverse">
         <div className="card flex-shrink-0   shadow-2xl bg-base-100">
           <div className="card-body">
