@@ -1,9 +1,18 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider'
+import { FaUser } from 'react-icons/fa'
 
 const Header = () => {
-  const { user } = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => console.error(err))
+    navigate('/')
+  }
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -32,9 +41,11 @@ const Header = () => {
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <div className="tooltip tooltip-top" data-tip="hello">
-                <img src="https://placeimg.com/80/80/people" alt="" />
-              </div>
+              {user?.photoURL ? (
+                <img src={user.photoURL} alt="" />
+              ) : (
+                <FaUser className="mt-3 ml-3" />
+              )}
             </div>
           </label>
           <ul
@@ -51,7 +62,7 @@ const Header = () => {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <button onClick={handleLogOut}>Logout</button>
             </li>
           </ul>
         </div>
