@@ -14,10 +14,10 @@ const Header = () => {
           <Link to="/" className="mr-14">
             Home
           </Link>
-          <Link to="/" className="mr-14">
+          <Link to="/about" className="mr-14">
             About
           </Link>
-          <Link to="/" className="mr-14">
+          <Link to="/login" className="mr-14">
             Log in
           </Link>
           <Link to="/blogs" className="">
