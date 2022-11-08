@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { FaGoogle } from 'react-icons/fa'
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider'
+import { GoogleAuthProvider } from 'firebase/auth'
 
 const Login = () => {
+  const { providerLogin } = useContext(AuthContext)
+  const googleProvider = new GoogleAuthProvider()
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user
+        console.log(user)
+      })
+      .catch((err) => console.error(err))
+  }
+
   return (
     <form className="hero w-3/4 mx-auto rounded-lg my-6 p-32 bg-base-200">
       <div className="hero-content w-full flex-col lg:flex-row-reverse">
@@ -34,7 +48,10 @@ const Login = () => {
             </div>
             <h3>You can also sign in with :</h3>
             <div className="flex w-full mt-3">
-              <button className="btn btn-dark w-full">
+              <button
+                onClick={handleGoogleSignIn}
+                className="btn btn-dark w-full"
+              >
                 <FaGoogle className="mr-3" />
                 Sign in with Google
               </button>

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider'
 
 const Header = () => {
+  const { user } = useContext(AuthContext)
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -11,26 +13,28 @@ const Header = () => {
       </div>
       <div className="flex-none gap-2">
         <div className="mr-6">
-          <Link to="/" className="mr-14">
+          <Link to="/" className="mr-14 hover:border-b-2 pb-1">
             Home
           </Link>
-          <Link to="/about" className="mr-14">
+          <Link to="/about" className="mr-14 hover:border-b-2 pb-1">
             About
           </Link>
-          <Link to="/contact" className="mr-14">
+          <Link to="/contact" className="mr-14 hover:border-b-2 pb-1">
             Contact
           </Link>
-          <Link to="/login" className="mr-14">
+          <Link to="/login" className="mr-14 hover:border-b-2 pb-1">
             Log in
           </Link>
-          <Link to="/blogs" className="">
+          <Link to="/blogs" className="hover:border-b-2 pb-1">
             Blogs
           </Link>
         </div>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" alt="" />
+              <div className="tooltip tooltip-top" data-tip="hello">
+                <img src="https://placeimg.com/80/80/people" alt="" />
+              </div>
             </div>
           </label>
           <ul
