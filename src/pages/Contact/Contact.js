@@ -59,7 +59,7 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="email"
-                    className="input input-bordered p-8"
+                    className="input input-bordered p-8 mt-1"
                   />
                 </div>
                 <div className="form-control flex">
