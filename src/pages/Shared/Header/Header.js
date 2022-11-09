@@ -31,6 +31,9 @@ const Header = () => {
           <Link to="/contact" className="mr-14 hover:border-b-2 pb-1">
             Contact
           </Link>
+          <Link to="/myreviews" className="mr-14 hover:border-b-2 pb-1">
+            My Reviews
+          </Link>
           <Link to="/login" className="mr-14 hover:border-b-2 pb-1">
             Log in
           </Link>
