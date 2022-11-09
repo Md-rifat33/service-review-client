@@ -8,6 +8,7 @@ import Contact from '../../pages/Contact/Contact'
 import Home from '../../pages/Home/Home/Home'
 import Login from '../../pages/Login/Login'
 import Signup from '../../pages/Login/Signup'
+import Page404 from '../../pages/Page404/Page404'
 
 export const routes = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const routes = createBrowserRouter([
         element: <DetailsCard />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
+      },
+      {
+        path: '*',
+        element: <Page404 />,
       },
     ],
   },

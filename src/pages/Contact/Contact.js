@@ -35,7 +35,7 @@ const Contact = () => {
             <div className="text-center lg:text-left">
               <img src={img} alt="" className="rounded-lg ml-6" />
             </div>
-            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-200">
+            <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-200">
               <div className="card-body">
                 <div className="form-control flex">
                   <label className="label">
@@ -79,7 +79,7 @@ const Contact = () => {
                     className="absolute bottom-44 ml-2"
                   />
                   <textarea
-                    className="textarea textarea-primary  p-8 w-80 mt-3"
+                    className="textarea textarea-primary  p-8 w-full mt-3"
                     placeholder="message"
                   ></textarea>
                 </div>

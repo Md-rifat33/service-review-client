@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
 import { FaUser, FaPhone } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMessage, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider'
 
 const DetailsCard = () => {
   const details = useLoaderData()
-  const { title, image, description } = details
+  const { title, image, description, _id } = details
+  const { user } = useContext(AuthContext)
   return (
     <div className="w-full">
       <div className="w-3/4 mx-auto">
@@ -56,6 +58,7 @@ const DetailsCard = () => {
                   <input
                     type="text"
                     placeholder="email"
+                    defaultValue={user?.email}
                     className="input input-bordered p-8 mt-1"
                   />
                 </div>
@@ -81,7 +84,9 @@ const DetailsCard = () => {
                   ></textarea>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Submit</button>
+                  <Link to={`/services/${_id}/${_id}`}>
+                    <input className="btn btn-primary w-full" value="submit" />
+                  </Link>
                 </div>
               </div>
             </div>

@@ -1,20 +1,25 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaUser } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
+import {
+  faEnvelope,
+  faLock,
+  faPhotoFilm,
+} from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider'
 
 const Signup = () => {
-  const { createUser } = useContext(AuthContext)
+  const { createUser, user } = useContext(AuthContext)
   const navigate = useNavigate()
+  const [name, setName] = useState(user?.displayName)
+  console.log(name)
   const handleSubmit = (event) => {
     event.preventDefault()
     const form = event.target
-    const name = form.name.value
     const email = form.email.value
     const password = form.password.value
-    createUser(email, password)
+    createUser(email, password, name)
       .then((result) => {
         const user = result.user
         console.log(user)
@@ -22,6 +27,11 @@ const Signup = () => {
         navigate('/')
       })
       .catch((error) => console.error(error))
+  }
+
+  const handleChange = (event) => {
+    setName(event.target.value)
+    console.log(name)
   }
   return (
     <form
@@ -37,6 +47,7 @@ const Signup = () => {
               </label>
               <FaUser className="absolute top-24 ml-2" />
               <input
+                onChange={handleChange}
                 name="name"
                 type="text"
                 placeholder="name"
@@ -60,13 +71,29 @@ const Signup = () => {
                 required
               />
             </div>
+            <div className="form-control ">
+              <label className="label">
+                <span className="label-text">PhotUrl</span>
+              </label>
+              <FontAwesomeIcon
+                icon={faPhotoFilm}
+                className="absolute mt-16 ml-2"
+              />
+              <input
+                name="photourl"
+                type="text"
+                placeholder="photourl"
+                className="input input-bordered p-8 ml-1"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <FontAwesomeIcon
                 icon={faLock}
-                className="absolute top-80 bottom-8 ml-3 "
+                className="absolute bottom-44 ml-3 "
               />
               <input
                 name="password"
