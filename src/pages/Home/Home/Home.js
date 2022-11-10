@@ -36,7 +36,7 @@ const Home = () => {
               recommending details such as leather quality.
             </p>
 
-            <button className="btn btn-primary w-64 font-bold">
+            <button className="btn btn-primary w-64 font-bold text-slate-200">
               Get Started
             </button>
           </div>
