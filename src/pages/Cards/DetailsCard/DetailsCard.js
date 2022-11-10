@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
 import { FaUser, FaPhone } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,17 +10,6 @@ const DetailsCard = () => {
   const { title, image, description, _id } = details
   const { user } = useContext(AuthContext)
 
-  const handleReview = (event) => {
-    event.preventDefault()
-    const form = event.target
-    const name = form.name.value
-    const email = user?.email || alert('unregistered')
-    const phone = form.phone.value
-    const message = form.message.value
-    const order = {
-      service: _id,
-    }
-  }
   return (
     <div className="w-full">
       <div className="w-3/4 mx-auto">
@@ -44,8 +33,8 @@ const DetailsCard = () => {
         </div>
         {/* end : card */}
         {/* start : review add form */}
-        <form className="w-full">
-          <div className="w-3/4 mx-auto flex justify-center">
+        <div className="w-full">
+          <form className="w-3/4 mx-auto flex justify-center">
             <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-200">
               <div className="card-body">
                 <div className="form-control flex">
@@ -58,6 +47,7 @@ const DetailsCard = () => {
                     type="text"
                     placeholder="name"
                     className="input input-bordered p-8"
+                    required
                   />
                 </div>
                 <div className="form-control flex">
@@ -75,6 +65,7 @@ const DetailsCard = () => {
                     defaultValue={user?.email}
                     readOnly
                     className="input input-bordered p-8 mt-1"
+                    required
                   />
                 </div>
                 <div className="form-control flex">
@@ -87,6 +78,7 @@ const DetailsCard = () => {
                     name="number"
                     placeholder="number"
                     className="input input-bordered p-8"
+                    required
                   />
                 </div>
                 <div className="text-center flex">
@@ -98,18 +90,23 @@ const DetailsCard = () => {
                     name="message"
                     className="textarea textarea-primary  p-8 w-full mt-3"
                     placeholder="message"
+                    required
                   ></textarea>
                 </div>
                 <div className="form-control mt-6">
-                  <Link to={`/services/${_id}/reviews`}>
-                    <input className="btn btn-primary w-full" value="submit" />
+                  <Link>
+                    <input
+                      className="btn btn-primary w-full"
+                      type="submit"
+                      value="submit"
+                    />
                   </Link>
                 </div>
               </div>
             </div>
             {/* end : review add form */}
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   )
