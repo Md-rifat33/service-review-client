@@ -111,12 +111,12 @@ const Home = () => {
           </Link>
         </div>
       </div>
-      <div className="w-screen mt-16">
+      <div className=" mt-16">
         <MapContainer
           center={[51.505, -0.09]}
           zoom={13}
           scrollWheelZoom={false}
-          className="h-[600px]  w-screen"
+          className="h-[600px]  w-full"
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
