@@ -9,6 +9,7 @@ import Home from '../../pages/Home/Home/Home'
 import Login from '../../pages/Login/Login'
 import Signup from '../../pages/Login/Signup'
 import Page404 from '../../pages/Page404/Page404'
+import Reviews from '../../pages/Reviews/Reviews'
 
 export const routes = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ export const routes = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-        loader: () => fetch(`http://localhost:5000/`),
+        loader: () => fetch(`https://backend-three-cyan.vercel.app/`),
       },
       { path: '/blogs', element: <Blogs /> },
       { path: '/about', element: <About /> },
@@ -28,13 +29,17 @@ export const routes = createBrowserRouter([
       {
         path: '/services',
         element: <ServicesCard />,
-        loader: () => fetch(`http://localhost:5000/services`),
+        loader: () => fetch(`https://backend-three-cyan.vercel.app/services`),
       },
       {
         path: '/services/:id',
         element: <DetailsCard />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://backend-three-cyan.vercel.app/services/${params.id}`),
+      },
+      {
+        path: '/services/:id/reviews',
+        element: <Reviews />,
       },
       {
         path: '*',

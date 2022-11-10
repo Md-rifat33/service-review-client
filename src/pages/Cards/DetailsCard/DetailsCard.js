@@ -9,6 +9,18 @@ const DetailsCard = () => {
   const details = useLoaderData()
   const { title, image, description, _id } = details
   const { user } = useContext(AuthContext)
+
+  const handleReview = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const name = form.name.value
+    const email = user?.email || alert('unregistered')
+    const phone = form.phone.value
+    const message = form.message.value
+    const order = {
+      service: _id,
+    }
+  }
   return (
     <div className="w-full">
       <div className="w-3/4 mx-auto">
@@ -32,7 +44,7 @@ const DetailsCard = () => {
         </div>
         {/* end : card */}
         {/* start : review add form */}
-        <div className="w-full">
+        <form className="w-full">
           <div className="w-3/4 mx-auto flex justify-center">
             <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-200">
               <div className="card-body">
@@ -42,6 +54,7 @@ const DetailsCard = () => {
                   </label>
                   <FaUser className="absolute top-24 ml-2" />
                   <input
+                    name="name"
                     type="text"
                     placeholder="name"
                     className="input input-bordered p-8"
@@ -57,8 +70,10 @@ const DetailsCard = () => {
                   />
                   <input
                     type="text"
+                    name="email"
                     placeholder="email"
                     defaultValue={user?.email}
+                    readOnly
                     className="input input-bordered p-8 mt-1"
                   />
                 </div>
@@ -69,6 +84,7 @@ const DetailsCard = () => {
                   <FaPhone className="absolute top-80 ml-2" />
                   <input
                     type="number"
+                    name="number"
                     placeholder="number"
                     className="input input-bordered p-8"
                   />
@@ -79,12 +95,13 @@ const DetailsCard = () => {
                     className="absolute bottom-44 ml-2"
                   />
                   <textarea
+                    name="message"
                     className="textarea textarea-primary  p-8 w-full mt-3"
                     placeholder="message"
                   ></textarea>
                 </div>
                 <div className="form-control mt-6">
-                  <Link to={`/services/${_id}/${_id}`}>
+                  <Link to={`/services/${_id}/reviews`}>
                     <input className="btn btn-primary w-full" value="submit" />
                   </Link>
                 </div>
@@ -92,7 +109,7 @@ const DetailsCard = () => {
             </div>
             {/* end : review add form */}
           </div>
-        </div>
+        </form>
       </div>
     </div>
   )
