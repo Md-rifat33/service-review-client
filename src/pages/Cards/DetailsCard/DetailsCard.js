@@ -4,11 +4,13 @@ import { FaUser, FaPhone } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMessage, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider'
+import useTitle from '../../../Hooks/useTitle'
 
 const DetailsCard = () => {
   const details = useLoaderData()
   const { title, image, description, _id } = details
   const { user } = useContext(AuthContext)
+  useTitle('Card Details')
 
   return (
     <div className="w-full">
