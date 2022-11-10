@@ -3,10 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle } from 'react-icons/fa'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider'
 import { GoogleAuthProvider } from 'firebase/auth'
+import useTitle from '../../Hooks/useTitle'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 
 const Login = () => {
+  useTitle('Log in')
   const { providerLogin, signIn } = useContext(AuthContext)
   const navigate = useNavigate()
   const googleProvider = new GoogleAuthProvider()

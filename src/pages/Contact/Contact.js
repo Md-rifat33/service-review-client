@@ -1,10 +1,12 @@
 import React from 'react'
 import img from '../../assets/image5.jpg'
 import { FaUser, FaPhone } from 'react-icons/fa'
+import useTitle from '../../Hooks/useTitle'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMessage, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 const Contact = () => {
+  useTitle('Contact')
   return (
     <div className="w-full mt-9 mb-12">
       <div

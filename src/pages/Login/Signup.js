@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import useTitle from '../../Hooks/useTitle'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaUser } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,6 +11,7 @@ import {
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider'
 
 const Signup = () => {
+  useTitle('Signup')
   const { createUser, user } = useContext(AuthContext)
   const navigate = useNavigate()
   const [name, setName] = useState(user?.displayName)

@@ -31,9 +31,7 @@ const Header = () => {
           <Link to="/contact" className="mr-14 hover:border-b-2 pb-1">
             Contact
           </Link>
-          <Link to="/myreviews" className="mr-14 hover:border-b-2 pb-1">
-            My Reviews
-          </Link>
+
           <Link to="/login" className="mr-14 hover:border-b-2 pb-1">
             Log in
           </Link>
@@ -56,13 +54,15 @@ const Header = () => {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="" className="justify-between">
+              <a href="/" className="justify-between">
                 Profile
                 <span className="badge">New</span>
               </a>
             </li>
             <li>
-              <a>Settings</a>
+              <a className="" href="/">
+                Settings
+              </a>
             </li>
             <li>
               <button onClick={handleLogOut}>Logout</button>

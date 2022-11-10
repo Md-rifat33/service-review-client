@@ -5,8 +5,10 @@ import img2 from '../../../assets/image2.jpg'
 import img3 from '../../../assets/image3.jpg'
 import img4 from '../../../assets/image4.jpg'
 import LimitedCard from '../../Cards/ServiceLimitedCard/LimitedCard'
+import useTitle from '../../../Hooks/useTitle'
 
 const Home = () => {
+  useTitle('Home')
   const services = useLoaderData()
   return (
     <div className="w-full">
